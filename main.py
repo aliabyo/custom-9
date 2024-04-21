@@ -105,17 +105,17 @@ class Bot(BaseBot):
         Counter.bot_id = session_metadata.user_id
         print("Ali is booting ...")
    
-
+    
         self.highrise.tg.create_task(self.highrise.walk_to(Position(2.5, 0.25, 4.5, facing='FrontRight')))
         self.load_temporary_vips()
-
-        await self.highrise.chat(f"hi guys im here ")
+        await asyncio.sleep(6)
+        await self.highrise.chat(f"Deployed")
       except Exception as e:
           print(f"An exception occured: {e}")  
     async def on_emote(self, user: User ,emote_id : str , receiver: User | None )-> None:
       print (f"{user.username} , {emote_id}")
 
-    async def on_user_join(self, user: User) -> None:
+    async def on_user_join(self, user: User, position: Position | AnchorPosition) -> None:
 
      try:
 
